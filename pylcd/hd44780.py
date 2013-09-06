@@ -292,8 +292,6 @@ class DisplayUI:
 		self.line_buffer = []
 		self.viewport = ()
 		self.v_scroll_pos = 0
-		self.input.set_error(False)
-		self.input.set_ready(True)
 	
 	def _chunks(self, seq, size):
 		for i in range(0, len(seq), size):
@@ -324,8 +322,7 @@ class DisplayUI:
 		return aligned_line
 	
 	def shutdown(self):
-		self.input.set_ready(False)
-		self.input.set_error(False)
+            pass
 	
 	def update(self, lines = None, home = True):
 		if home:
