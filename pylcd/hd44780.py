@@ -162,15 +162,9 @@ class Display:
 		self.write_value(0b00100000 + _multiline + _five_seven_font, data = False)
 	
 	def set_cursor_position(self, column = 0, line = 0):
-		if line == 1:
-			_line = 0xC0
-		elif line == 2:
-			_line = 0x90
-		elif line == 3:
-			_line = 0xD0
-		else:
-			line = 0
-			_line = 0x80
+                line_addresses = { 16 : [0x80, 0xc0, 0x90, 0xd0],
+                                   20 : [0x80, 0xc0, 0x94, 0xd4] }
+		_line = line_addresses[self.column_count][line]
 		self.cursor_pos = [column, line]
 		self.write_value(_line + column, data = False)
 	
