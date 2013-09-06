@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
         name = "pyLCD",
-        version = "1.1.1",
+        version = "1.1.2",
         description = "A library for controlling LCDs on various hardware backends",
         license = "AGPLv3",
         author = "Julian Metzler",
