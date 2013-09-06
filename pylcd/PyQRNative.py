@@ -1,5 +1,5 @@
 import math
-from PIL import Image, ImageDraw
+import Image, ImageDraw
 
 #QRCode for Python
 #

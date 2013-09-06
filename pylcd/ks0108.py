@@ -16,7 +16,7 @@ import PyQRNative as qr
 
 from copy import deepcopy
 try:
-	from PIL import Image, ImageDraw, ImageFont
+	import Image, ImageDraw, ImageFont
 except ImportError:
 	IMAGE = False
 else:
