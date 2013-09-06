@@ -61,10 +61,10 @@ class GPIOBackend:
 	def __init__(self, display, pinmap):
 		self.display = display
 		try:
-			import wiringpi
-			self.gpio = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO)
+			import wiringpi2
+			self.gpio = wiringpi2.GPIO(wiringpi2.GPIO.WPI_MODE_GPIO)
 		except:
-			raise IOError("Could not export the GPIO pins. Make sure that you have the wiringpi library installed, run as root and are on a Raspberry Pi.")
+			raise IOError("Could not export the GPIO pins. Make sure that you have the wiringpi2 library installed, run as root and are on a Raspberry Pi.")
 		
 		self.reverse_pinmap = dict([(value, key) for key, value in pinmap.iteritems()])
 		for pin, output in pinmap.iteritems():

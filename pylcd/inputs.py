@@ -56,10 +56,10 @@ class SystemInput:
 class GPIOInput:
 	def __init__(self, pinmap):
 		try:
-			import wiringpi
-			self.gpio = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO)
+			import wiringpi2
+			self.gpio = wiringpi2.GPIO(wiringpi2.GPIO.WPI_MODE_GPIO)
 		except:
-			raise IOError("Could not export the GPIO pins. Make sure that you have the wiringpi library installed, run as root and are on a Raspberry Pi.")
+			raise IOError("Could not export the GPIO pins. Make sure that you have the wiringpi2 library installed, run as root and are on a Raspberry Pi.")
 		
 		self.pinmap = dict([(key, value if type(value) in [list, tuple] else (value, False, 1)) for key, value in pinmap.iteritems()])
 		self.reverse_pinmap = dict([(value[0], key) for key, value in self.pinmap.iteritems()])
@@ -69,7 +69,7 @@ class GPIOInput:
 			setattr(self, 'PIN_%s' % name, pin)
 			self.gpio.pinMode(pin, self.gpio.OUTPUT if output else self.gpio.INPUT)
 			if pullup != 0:
-				wiringpi.pullUpDnControl(pin, wiringpi.PUD_UP if pullup > 0 else wiringpi.PUD_DOWN)
+				wiringpi2.pullUpDnControl(pin, wiringpi2.PUD_UP if pullup > 0 else wiringpi2.PUD_DOWN)
 	
 	def read_key_states(self):
 		states = {}
